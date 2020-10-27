@@ -1,0 +1,10 @@
+#
+
+npx sequelize
+sequelize init
+
+#criar banco de dados
+sequelize migration:generate --name criate_users
+
+#roda todas as migrations
+npx sequelize db:migrations
