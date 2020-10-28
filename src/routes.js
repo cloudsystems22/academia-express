@@ -1,19 +1,13 @@
-const express = require('express');
-const authControler = require('./controllers/authController');
-const routes = express.Router();
+const { Router } = require('express');
+const authController = require('./controllers/authController');
+const productController = require('./controllers/Product');
 
-const authController = require('./controllers/authController')
+const authMiddleware = require('./middlewares/Auth');
+const routes = Router();
 
-routes.get("/", (req, res) => {
-    try{
-        return res.send('<h1>Bem vindo!</h1><p>API!</p>');
-    } catch(err) {
-        return res.status(400).send({ error: "Erro ao exibir index!"});
-    }
-})
+routes.post('/login', authController.index);
+routes.post('/register', authController.store);
 
-routes.post('/login', authControler.index);
-routes.post('/register', authControler.store);
-
+routes.get('/produtos', authMiddleware, productController.index);
 
 module.exports = routes;
