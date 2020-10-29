@@ -12,18 +12,10 @@ const Pedido = (sequelize, dataTypes) => {
         tipo: dataTypes.STRING(45),
         clienteId: {
           type: dataTypes.INTEGER,
-          references: {
-            model: 'clientes',
-            key: 'id'
-          },
           allowNull: false
         },
         carroId: {
           type: dataTypes.INTEGER,
-          references: {
-            model: 'carros',
-            key: 'id'
-          },
           allowNull: false
         },
         createdAt: {
@@ -35,7 +27,11 @@ const Pedido = (sequelize, dataTypes) => {
           type: dataTypes.DATE
         }
     }
-    )
+    );
+    model.associate = (models) => {
+      model.belongsTo(models.Cliente, {foreignKey:'clienteId', as:'clientes'});
+      model.belongsTo(models.Carro, {foreignKey:'carroId', as: 'carros'});
+    }
     return model;
 }
 

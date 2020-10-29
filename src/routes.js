@@ -3,6 +3,8 @@ const authController = require('./controllers/authController');
 const userController = require('./controllers/userController');
 const clientesController = require('./controllers/clientesController');
 const carrosController = require('./controllers/carrosController');
+const pedidosController = require('./controllers/pedidosController');
+const relatoriosController = require('./controllers/relatoriosController');
 
 const authMiddleware = require('./middlewares/Auth');
 const routes = Router();
@@ -24,5 +26,16 @@ routes.post('/createCarros', authMiddleware, carrosController.created)
 routes.post('/detailsCarros', authMiddleware, carrosController.details)
 routes.put('/updateCarros', authMiddleware, carrosController.update)
 routes.delete('/deleteCarros', authMiddleware, carrosController.delete)
+
+//sessão de pedidos
+routes.get('/showPedidos', authMiddleware, pedidosController.index)
+routes.post('/createPedido', authMiddleware, pedidosController.created)
+routes.post('/detailsPedido', authMiddleware, pedidosController.details)
+routes.put('/updatePedido', authMiddleware, pedidosController.update)
+routes.delete('/deletePedido', authMiddleware, pedidosController.delete)
+
+//sessão de relatórios
+routes.get('/maisProcurado', authMiddleware, relatoriosController.maisProcurado)
+routes.get('/aluguelCompra/:ano&:mes', authMiddleware, relatoriosController.aluguelCompra)
 
 module.exports = routes;

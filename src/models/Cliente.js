@@ -26,10 +26,6 @@ const Cliente = (sequelize, dataTypes) => {
           cidade: dataTypes.STRING(45),
           uf: dataTypes.STRING(45),
           email: dataTypes.STRING(45),
-    },
-    {
-        tableName: 'clientes',
-        timestamps: false
     }
     )
     return model;

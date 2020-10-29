@@ -8,7 +8,8 @@ const clientesController = {
      },
     async created(req, res){ 
         const { name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email } = req.body;
-        const clientes = await Cliente.create({name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email})
+        const now = new Date()
+        const clientes = await Cliente.create({name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email, createdAt: now, updatedAt: now})
         //console.log(clientes);
         return res.status(200).json(clientes)
 
@@ -22,7 +23,8 @@ const clientesController = {
    
     async update(req, res){
         const { id, name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email } = req.body;
-        const clientes = await Cliente.update({name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email }, { where: { id }});
+        const now = new Date()
+        const clientes = await Cliente.update({name, rg, cpf, logradouro, numero, bairro, cep, cidade, uf, email, updatedAt: now}, { where: { id }});
 
         return res.status(200).json(clientes);
      },
