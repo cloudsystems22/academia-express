@@ -8,3 +8,6 @@ sequelize migration:generate --name criate_users
 
 #roda todas as migrations
 npx sequelize db:migrate
+
+#gera um novo seedars
+npx sequelize-cli seed:generate --name demo-user
