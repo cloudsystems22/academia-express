@@ -26,11 +26,8 @@ const relatoriosController = {
     },
     async pessoasAluguelAno(req, res){
         const { ano } = req.params;
-        console.log(req.body);
         const [pessoasAluguelAno] = await connection.query(
-            "SELECT tipo, YEAR(data), COUNT(*) As Total"+
-            "FROM pedidos WHERE YEAR(data)=$ano AND tipo = 'Aluguel'"+
-            "GROUP BY YEAR(data);",
+            "SELECT tipo, YEAR(data), COUNT(*) As Total FROM pedidos WHERE YEAR(data)=$ano AND tipo = 'Aluguel' GROUP BY YEAR(data);",
           {
             type: QueryTypes.SELECT,
             bind: { ano },
@@ -39,12 +36,9 @@ const relatoriosController = {
         return res.status(200).json(pessoasAluguelAno);
     },
     async pessoasCompraAno(req, res){
-        const { ano } = req.body;
-        console.log(req.body);
+        const { ano } = req.params;
         const [pessoasCompraAno] = await connection.query(
-            "SELECT tipo, YEAR(data), COUNT(*) As Total"+
-            "FROM pedidos WHERE YEAR(data)='$ano' AND tipo = 'Compra'"+
-            "GROUP BY YEAR(data);",
+            `SELECT tipo, YEAR(data), COUNT(*) As Total FROM pedidos WHERE YEAR(data)=$ano AND tipo = 'Compra' GROUP BY YEAR(data);`,
           {
             type: QueryTypes.SELECT,
             bind: { ano },

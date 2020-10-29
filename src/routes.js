@@ -37,5 +37,7 @@ routes.delete('/deletePedido', authMiddleware, pedidosController.delete)
 //sessão de relatórios
 routes.get('/maisProcurado', authMiddleware, relatoriosController.maisProcurado)
 routes.get('/aluguelCompra/:ano&:mes', authMiddleware, relatoriosController.aluguelCompra)
+routes.get('/pessoasAluguelAno/:ano', authMiddleware, relatoriosController.pessoasAluguelAno)
+routes.get('/pessoasCompraAno/:ano', authMiddleware, relatoriosController.pessoasCompraAno)
 
 module.exports = routes;
