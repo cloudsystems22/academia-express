@@ -7,4 +7,4 @@ sequelize init
 sequelize migration:generate --name criate_users
 
 #roda todas as migrations
-npx sequelize db:migrations
+npx sequelize db:migrate

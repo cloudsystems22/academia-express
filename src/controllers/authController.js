@@ -17,7 +17,7 @@ function generationToken(params = {}){
 const authController = {
     async index(req, res) {
         const { email, password } = req.body;
-    
+        console.log(req.body);
         const [user] = await connection.query(
           'select id, email, password from users where email=$email',
           {
