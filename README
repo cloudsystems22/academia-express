@@ -11,3 +11,13 @@ npx sequelize db:migrate
 
 #gera um novo seedars
 npx sequelize-cli seed:generate --name demo-user
+
+
+#teste
+yarn add jest -D 
+yarn add supertests -D
+
+yarn jest --init
+
+yarn test
+yarn test nomearquivo.js
